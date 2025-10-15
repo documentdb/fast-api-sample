@@ -29,39 +29,51 @@ A modern, full-stack e-commerce application built with FastAPI and open-source D
 
 ## 🚀 Quick Start
 
-### Option A: Automated Setup (Recommended)
-
-```powershell
-# Run the setup script
-.\scripts\setup-lab.ps1
-```
-
-This script will:
-- ✓ Check Docker is installed and running
-- ✓ Start DocumentDB container
-- ✓ Verify connection
-- ✓ Display next steps with connection string
-
-Then follow the [Complete Lab Walkthrough](docs/LAB_WALKTHROUGH.md) to load data and start building!
-
-### Option B: Manual Setup
-
 #### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/documentdb-samples/full-stack-fastapi-documentdb.git
-cd full-stack-fastapi-documentdb
+git clone https://github.com/documentdb/fast-api-sample.git
+cd fast-api-sample
 ```
 
-#### 2. Set Up Environment Variables
+#### 2. Set up your DocumentDB instance
+```bash
+# Pull the latest DocumentDB Docker image
+docker pull ghcr.io/documentdb/documentdb/documentdb-local:latest
+
+# Tag the image for convenience
+docker tag ghcr.io/documentdb/documentdb/documentdb-local:latest documentdb
+
+# Run the container with your chosen username and password
+docker run -dt -p 10260:10260 --name documentdb-container documentdb --username <YOUR_USERNAME> --password <YOUR_PASSWORD>
+docker image rm -f ghcr.io/documentdb/documentdb/documentdb-local:latest
+```
+- Click the DocumentDB icon in the VS Code sidebar
+- Click "Add New Connection"
+- On the navigation bar, click on "Connection String"
+- Paste your connection string
+```bash
+mongodb://<YOUR_USERNAME>:<YOUR_PASSWORD>@localhost:10260/?tls=true&tlsAllowInvalidCertificates=true&authMechanism=SCRAM-SHA-256
+```
+- Click on the drop-down next to your local connection and select "Create Database..."
+- Enter database name and confirm (suggested: ecommerce)
+- Click on the drop-down next to your created database and select "Create Collection..."
+- Create your collections, `products` and `customers` and confirm.
+
+#### 3. Import data to DocumentDB
+- For each collection, click the `Import` button on the top-right corner. 
+- Import the `/scripts/sample_customers.json` file in the `customers` collection and `/scripts/sample_products.json` file in the `products` collection.
+
+
+#### 4. Set Up Environment Variables
 
 ```bash
 cp .env.example .env
 ```
 
-Edit `.env` if you want to customize any settings (optional for local development).
+In the `.env` file, add your connection string, database name, and DocumentDB credentials.
 
-#### 3. Start the Application
+#### 5. Start the Application
 
 ```bash
 docker-compose up --build
