@@ -25,11 +25,11 @@ async def load_sample_data():
     """Load sample data into DocumentDB."""
     
     print("🔌 Connecting to DocumentDB...")
-    client = AsyncIOMotorClient(settings.MONGODB_URL)
+    client = AsyncIOMotorClient(settings.DOCUMENTDB_URL)
     
     # Initialize Beanie
     await init_beanie(
-        database=client[settings.MONGODB_DB_NAME],
+        database=client[settings.DOCUMENTDB_DB_NAME],
         document_models=[Product, Customer, Order],
     )
     

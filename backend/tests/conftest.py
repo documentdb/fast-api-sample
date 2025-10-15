@@ -33,7 +33,7 @@ async def test_db():
     """
     # Create test database connection
     test_db_name = "documentdb_test"
-    client = AsyncIOMotorClient(settings.MONGODB_URL)
+    client = AsyncIOMotorClient(settings.DOCUMENTDB_URL)
     
     # Initialize Beanie with test database
     await init_beanie(

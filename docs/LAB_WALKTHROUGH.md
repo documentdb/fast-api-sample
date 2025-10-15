@@ -276,8 +276,8 @@ Create a `.env` file in the project root (or verify it exists):
 # .env
 DOCUMENTDB_USERNAME=admin
 DOCUMENTDB_PASSWORD=password123
-MONGODB_URL=mongodb://admin:password123@localhost:10260/?authMechanism=SCRAM-SHA-256&tls=true&tlsAllowInvalidCertificates=true
-MONGODB_DB_NAME=ecommerce
+DOCUMENTDB_URL=mongodb://admin:password123@localhost:10260/?authMechanism=SCRAM-SHA-256&tls=true&tlsAllowInvalidCertificates=true
+DOCUMENTDB_DB_NAME=ecommerce
 DEBUG=true
 RELOAD=true
 ```

@@ -437,7 +437,7 @@ tls=true&tlsAllowInvalidCertificates=true
    ```
 
 3. Check database name in connection matches application:
-   - Default: `documentdb` (from `MONGODB_DB_NAME` in `.env`)
+   - Default: `documentdb` (from `DOCUMENTDB_DB_NAME` in `.env`)
 
 ### Performance Issues
 

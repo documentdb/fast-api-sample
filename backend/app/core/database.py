@@ -27,11 +27,11 @@ class Database:
     async def connect_db(cls):
         """Initialize database connection."""
         try:
-            logger.info(f"Connecting to DocumentDB at {settings.MONGODB_URL.split('@')[1].split('?')[0]}")
+            logger.info(f"Connecting to DocumentDB at {settings.DOCUMENTDB_URL.split('@')[1].split('?')[0]}")
             
             # Create motor client
             cls.client = AsyncIOMotorClient(
-                settings.MONGODB_URL,
+                settings.DOCUMENTDB_URL,
                 tls=True,
                 tlsAllowInvalidCertificates=True,
             )
@@ -42,7 +42,7 @@ class Database:
             
             # Initialize Beanie with document models
             await init_beanie(
-                database=cls.client[settings.MONGODB_DB_NAME],
+                database=cls.client[settings.DOCUMENTDB_DB_NAME],
                 document_models=[
                     Product,
                     Order,
@@ -86,7 +86,7 @@ class Database:
     async def drop_collections(cls):
         """Drop all collections - USE WITH CAUTION! This deletes all data."""
         try:
-            db = cls.client[settings.MONGODB_DB_NAME]
+            db = cls.client[settings.DOCUMENTDB_DB_NAME]
             
             # Drop each collection
             await db.products.drop()

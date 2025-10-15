@@ -14,8 +14,8 @@ class Settings(BaseSettings):
     """Application settings loaded from environment variables."""
     
     # MongoDB/DocumentDB Configuration
-    MONGODB_URL: str = "mongodb://admin:password123@documentdb:10260/?tls=true&tlsAllowInvalidCertificates=true&authMechanism=SCRAM-SHA-256"
-    MONGODB_DB_NAME: str = "ecommerce"
+    DOCUMENTDB_URL: str = "mongodb://admin:password123@documentdb:10260/?tls=true&tlsAllowInvalidCertificates=true&authMechanism=SCRAM-SHA-256"
+    DOCUMENTDB_DB_NAME: str = "ecommerce"
     
     # Application Settings
     APP_NAME: str = "FastAPI E-Commerce"

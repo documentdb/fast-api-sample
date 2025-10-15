@@ -90,8 +90,8 @@ Data loaded successfully!
 
 **Environment Variables**:
 Uses `.env` file or defaults:
-- `MONGODB_URL` - Connection string (default: mongodb://admin:password123@localhost:10260/...)
-- `MONGODB_DB_NAME` - Database name (default: ecommerce)
+- `DOCUMENTDB_URL` - Connection string (default: mongodb://admin:password123@localhost:10260/...)
+- `DOCUMENTDB_DB_NAME` - Database name (default: ecommerce)
 
 ---
 
@@ -322,8 +322,8 @@ Scripts use these environment variables (from `.env` or defaults):
 # DocumentDB Connection
 DOCUMENTDB_USERNAME=admin
 DOCUMENTDB_PASSWORD=password123
-MONGODB_URL=mongodb://admin:password123@localhost:10260/?authMechanism=SCRAM-SHA-256&tls=true&tlsAllowInvalidCertificates=true
-MONGODB_DB_NAME=ecommerce
+DOCUMENTDB_URL=mongodb://admin:password123@localhost:10260/?authMechanism=SCRAM-SHA-256&tls=true&tlsAllowInvalidCertificates=true
+DOCUMENTDB_DB_NAME=ecommerce
 
 # FastAPI Settings
 DEBUG=true

@@ -41,7 +41,7 @@
 #### Variant B: `patty:chow` ⚠️ (NEEDS REPLACEMENT)
 **Found in:**
 - ⚠️ `.env` (actual working config)
-  - Line 2: `MONGODB_URL=mongodb://patty:chow@host.docker.internal:10260/...`
+  - Line 2: `DOCUMENTDB_URL=mongodb://patty:chow@host.docker.internal:10260/...`
   - Line 6: `DOCUMENTDB_USERNAME=patty`
   - Line 7: `DOCUMENTDB_PASSWORD=chow`
 - ⚠️ `docker-compose.yml`
@@ -69,7 +69,7 @@
 
 #### Variant A: `ecommerce` ✅ (TARGET - KEEP THIS)
 **Found in:**
-- ✅ `.env.example` - Line 3: `MONGODB_DB_NAME=ecommerce`
+- ✅ `.env.example` - Line 3: `DOCUMENTDB_DB_NAME=ecommerce`
 - ✅ All documentation in `docs/` folder
 - ✅ `scripts/README.md` (5 occurrences)
 - ✅ `scripts/setup-lab.ps1` (1 occurrence)
@@ -79,8 +79,8 @@
 
 #### Variant B: `shop` ⚠️ (NEEDS REPLACEMENT)
 **Found in:**
-- ⚠️ `.env` - Line 3: `MONGODB_DB_NAME=shop`
-- ⚠️ `docker-compose.yml` - Line 14: Default fallback `${MONGODB_DB_NAME:-shop}`
+- ⚠️ `.env` - Line 3: `DOCUMENTDB_DB_NAME=shop`
+- ⚠️ `docker-compose.yml` - Line 14: Default fallback `${DOCUMENTDB_DB_NAME:-shop}`
 - ⚠️ `TEST_BRANCH_ANALYSIS.md` (documentation only, mentions the inconsistency)
 
 **Total**: 2 files use `shop` ⚠️
@@ -196,7 +196,7 @@ These files already use the target standards:
 **File**: `.env.example`
 ```bash
 # Current:
-MONGODB_URL=mongodb://admin:password123@documentdb:10260/...
+DOCUMENTDB_URL=mongodb://admin:password123@documentdb:10260/...
 ```
 
 **Issue**: Uses service name `documentdb`, but documentation recommends `host.docker.internal` for two-container setup.
@@ -204,7 +204,7 @@ MONGODB_URL=mongodb://admin:password123@documentdb:10260/...
 **Recommendation**: 
 ```bash
 # For two-container architecture (recommended):
-MONGODB_URL=mongodb://admin:password123@host.docker.internal:10260/...
+DOCUMENTDB_URL=mongodb://admin:password123@host.docker.internal:10260/...
 ```
 
 ### 2. **Backend Dockerfile User**

@@ -10,8 +10,8 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - MONGODB_URL=${MONGODB_URL:-mongodb://admin:password123@host.docker.internal:10260/?tls=true&tlsAllowInvalidCertificates=true&authMechanism=SCRAM-SHA-256}
-      - MONGODB_DB_NAME=${MONGODB_DB_NAME:-ecommerce}
+      - DOCUMENTDB_URL=${DOCUMENTDB_URL}
+      - DOCUMENTDB_DB_NAME=${DOCUMENTDB_DB_NAME}
       - DEBUG=${DEBUG:-true}
       - RELOAD=${RELOAD:-true}
       - API_V1_PREFIX=${API_V1_PREFIX:-/api/v1}

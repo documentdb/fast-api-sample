@@ -192,8 +192,8 @@ Edit `.env` file:
 
 ```env
 # Database
-MONGODB_URL=mongodb://patty:chow@host.docker.internal:10260/?tls=true&tlsAllowInvalidCertificates=true&authMechanism=SCRAM-SHA-256
-MONGODB_DB_NAME=shop
+DOCUMENTDB_URL=mongodb://patty:chow@host.docker.internal:10260/?tls=true&tlsAllowInvalidCertificates=true&authMechanism=SCRAM-SHA-256
+DOCUMENTDB_DB_NAME=shop
 
 # API
 API_V1_PREFIX=/api/v1
