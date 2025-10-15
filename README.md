@@ -76,7 +76,7 @@ In the `.env` file, add your connection string, database name, and DocumentDB cr
 #### 5. Start the Application
 
 ```bash
-docker-compose up --build
+docker-compose up -d
 ```
 
 This will:

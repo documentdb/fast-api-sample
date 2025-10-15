@@ -20,6 +20,7 @@ build:
 up:
 	docker-compose up -d
 	@echo "Services started! API docs available at http://localhost:8000/docs"
+	@echo "Success! Sample available at http://localhost"
 
 down:
 	docker-compose down
