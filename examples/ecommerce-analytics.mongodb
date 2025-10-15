@@ -1,0 +1,354 @@
+// MongoDB Playground for E-commerce Analytics
+// This file contains sample queries and aggregations for exploring your e-commerce data
+// To run a query: Click the "Run" button above each section or press Ctrl+Shift+R
+
+// ==========================================
+// SETUP: Connect to your database
+// ==========================================
+use('documentdb');
+
+// ==========================================
+// PRODUCTS QUERIES
+// ==========================================
+
+// 1. Find all products
+db.products.find({});
+
+// 2. Find electronics products
+db.products.find({ category: "Electronics" });
+
+// 3. Find products with low stock (less than 10)
+db.products.find({ stock_quantity: { $lt: 10 } });
+
+// 4. Find products by price range ($50-$200)
+db.products.find({
+  price: { $gte: 50, $lte: 200 }
+});
+
+// 5. Search products by name (case-insensitive)
+db.products.find({
+  name: { $regex: "wireless", $options: "i" }
+});
+
+// 6. Count products by category
+db.products.aggregate([
+  {
+    $group: {
+      _id: "$category",
+      count: { $sum: 1 },
+      avgPrice: { $avg: "$price" },
+      totalStock: { $sum: "$stock_quantity" }
+    }
+  },
+  { $sort: { count: -1 } }
+]);
+
+// ==========================================
+// ORDERS QUERIES
+// ==========================================
+
+// 7. Find recent orders (adjust date as needed)
+db.orders.find({}).sort({ created_at: -1 }).limit(10);
+
+// 8. Find orders by status
+db.orders.find({ status: "pending" });
+
+// 9. Find orders for a specific customer
+db.orders.find({
+  customer_email: "alice.smith@example.com"
+});
+
+// 10. Find orders over $500
+db.orders.find({
+  total_amount: { $gt: 500 }
+});
+
+// 11. Order analytics by status
+db.orders.aggregate([
+  {
+    $group: {
+      _id: "$status",
+      totalOrders: { $sum: 1 },
+      totalRevenue: { $sum: "$total_amount" },
+      avgOrderValue: { $avg: "$total_amount" }
+    }
+  },
+  { $sort: { totalRevenue: -1 } }
+]);
+
+// 12. Top 10 best-selling products
+db.orders.aggregate([
+  { $unwind: "$items" },
+  {
+    $group: {
+      _id: {
+        productId: "$items.product_id",
+        productName: "$items.product_name"
+      },
+      totalQuantitySold: { $sum: "$items.quantity" },
+      totalRevenue: { $sum: "$items.subtotal" },
+      numberOfOrders: { $sum: 1 }
+    }
+  },
+  { $sort: { totalQuantitySold: -1 } },
+  { $limit: 10 },
+  {
+    $project: {
+      _id: 0,
+      productName: "$_id.productName",
+      productId: "$_id.productId",
+      quantitySold: "$totalQuantitySold",
+      revenue: "$totalRevenue",
+      orders: "$numberOfOrders"
+    }
+  }
+]);
+
+// 13. Revenue by month (2025 data)
+db.orders.aggregate([
+  {
+    $match: {
+      created_at: {
+        $gte: new Date("2025-01-01"),
+        $lt: new Date("2026-01-01")
+      }
+    }
+  },
+  {
+    $group: {
+      _id: {
+        year: { $year: "$created_at" },
+        month: { $month: "$created_at" }
+      },
+      totalRevenue: { $sum: "$total_amount" },
+      orderCount: { $sum: 1 }
+    }
+  },
+  { $sort: { "_id.year": 1, "_id.month": 1 } }
+]);
+
+// ==========================================
+// CUSTOMERS QUERIES
+// ==========================================
+
+// 14. Find all active customers
+db.customers.find({ is_active: true });
+
+// 15. Find customers by city
+db.customers.find({
+  "address.city": "San Francisco"
+});
+
+// 16. Search customers by name
+db.customers.find({
+  $or: [
+    { first_name: { $regex: "john", $options: "i" } },
+    { last_name: { $regex: "john", $options: "i" } }
+  ]
+});
+
+// 17. Customer spending analysis
+db.orders.aggregate([
+  {
+    $group: {
+      _id: "$customer_email",
+      totalOrders: { $sum: 1 },
+      totalSpent: { $sum: "$total_amount" },
+      avgOrderValue: { $avg: "$total_amount" },
+      lastOrderDate: { $max: "$created_at" }
+    }
+  },
+  { $sort: { totalSpent: -1 } },
+  { $limit: 10 }
+]);
+
+// ==========================================
+// CROSS-COLLECTION ANALYTICS
+// ==========================================
+
+// 18. Products never ordered (needs to be run manually in two steps)
+// First, get all product IDs from orders
+const orderedProductIds = db.orders.aggregate([
+  { $unwind: "$items" },
+  { $group: { _id: "$items.product_id" } },
+  { $project: { _id: 1 } }
+]).toArray().map(doc => doc._id);
+
+// Then find products not in that list
+db.products.find({
+  _id: { $nin: orderedProductIds }
+});
+
+// 19. Order status transition timeline
+db.orders.aggregate([
+  {
+    $project: {
+      customer_email: 1,
+      status: 1,
+      orderDate: "$created_at",
+      shippedDate: "$shipped_at",
+      deliveredDate: "$delivered_at",
+      processingTime: {
+        $dateDiff: {
+          startDate: "$created_at",
+          endDate: "$shipped_at",
+          unit: "day"
+        }
+      },
+      deliveryTime: {
+        $dateDiff: {
+          startDate: "$shipped_at",
+          endDate: "$delivered_at",
+          unit: "day"
+        }
+      }
+    }
+  },
+  {
+    $match: {
+      status: { $in: ["shipped", "delivered"] }
+    }
+  }
+]);
+
+// 20. Inventory value calculation
+db.products.aggregate([
+  {
+    $project: {
+      name: 1,
+      category: 1,
+      stock_quantity: 1,
+      price: 1,
+      inventoryValue: { $multiply: ["$stock_quantity", "$price"] }
+    }
+  },
+  {
+    $group: {
+      _id: "$category",
+      totalInventoryValue: { $sum: "$inventoryValue" },
+      productCount: { $sum: 1 }
+    }
+  },
+  { $sort: { totalInventoryValue: -1 } }
+]);
+
+// ==========================================
+// PERFORMANCE & INDEXES
+// ==========================================
+
+// 21. Check indexes on products collection
+db.products.getIndexes();
+
+// 22. Check indexes on orders collection
+db.orders.getIndexes();
+
+// 23. Check indexes on customers collection
+db.customers.getIndexes();
+
+// 24. Explain query plan (shows if indexes are used)
+db.products.find({ category: "Electronics" }).explain("executionStats");
+
+// ==========================================
+// DATA QUALITY CHECKS
+// ==========================================
+
+// 25. Find products with missing or null descriptions
+db.products.find({
+  $or: [
+    { description: null },
+    { description: "" },
+    { description: { $exists: false } }
+  ]
+});
+
+// 26. Find customers without addresses
+db.customers.find({
+  $or: [
+    { address: null },
+    { address: { $exists: false } }
+  ]
+});
+
+// 27. Find orders with mismatched totals (calculated vs stored)
+db.orders.aggregate([
+  {
+    $project: {
+      order_id: "$_id",
+      stored_total: "$total_amount",
+      calculated_total: {
+        $sum: "$items.subtotal"
+      },
+      mismatch: {
+        $ne: ["$total_amount", { $sum: "$items.subtotal" }]
+      }
+    }
+  },
+  {
+    $match: { mismatch: true }
+  }
+]);
+
+// ==========================================
+// USEFUL AGGREGATION PATTERNS
+// ==========================================
+
+// 28. Bucket products by price range
+db.products.aggregate([
+  {
+    $bucket: {
+      groupBy: "$price",
+      boundaries: [0, 50, 100, 200, 500, 1000],
+      default: "Over 1000",
+      output: {
+        count: { $sum: 1 },
+        products: { $push: "$name" }
+      }
+    }
+  }
+]);
+
+// 29. Find duplicate SKUs (data quality check)
+db.products.aggregate([
+  {
+    $group: {
+      _id: "$sku",
+      count: { $sum: 1 },
+      products: { $push: "$name" }
+    }
+  },
+  {
+    $match: { count: { $gt: 1 } }
+  }
+]);
+
+// 30. Average order value by customer location
+db.orders.aggregate([
+  {
+    $lookup: {
+      from: "customers",
+      localField: "customer_email",
+      foreignField: "email",
+      as: "customer"
+    }
+  },
+  { $unwind: "$customer" },
+  {
+    $group: {
+      _id: "$customer.address.state",
+      avgOrderValue: { $avg: "$total_amount" },
+      orderCount: { $sum: 1 },
+      totalRevenue: { $sum: "$total_amount" }
+    }
+  },
+  { $sort: { totalRevenue: -1 } }
+]);
+
+// ==========================================
+// NOTES
+// ==========================================
+// - Dates in MongoDB are stored as ISODate objects
+// - Use $regex with option "i" for case-insensitive searches
+// - $lookup performs left outer joins between collections
+// - Indexes improve query performance - check with .getIndexes()
+// - Use .explain() to analyze query performance
+// - Aggregation pipelines process in order from top to bottom

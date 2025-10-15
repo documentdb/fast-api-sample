@@ -1,0 +1,142 @@
+[
+  {
+    "email": "alice.smith@example.com",
+    "first_name": "Alice",
+    "last_name": "Smith",
+    "phone": "+1-555-0101",
+    "is_active": true,
+    "address": {
+      "street": "123 Market Street",
+      "city": "San Francisco",
+      "state": "CA",
+      "postal_code": "94102",
+      "country": "USA"
+    }
+  },
+  {
+    "email": "bob.johnson@example.com",
+    "first_name": "Bob",
+    "last_name": "Johnson",
+    "phone": "+1-555-0102",
+    "is_active": true,
+    "address": {
+      "street": "456 Broadway",
+      "city": "New York",
+      "state": "NY",
+      "postal_code": "10013",
+      "country": "USA"
+    }
+  },
+  {
+    "email": "carol.williams@example.com",
+    "first_name": "Carol",
+    "last_name": "Williams",
+    "phone": "+1-555-0103",
+    "is_active": true,
+    "address": {
+      "street": "789 Michigan Avenue",
+      "city": "Chicago",
+      "state": "IL",
+      "postal_code": "60611",
+      "country": "USA"
+    }
+  },
+  {
+    "email": "david.brown@example.com",
+    "first_name": "David",
+    "last_name": "Brown",
+    "phone": "+1-555-0104",
+    "is_active": true,
+    "address": {
+      "street": "321 Ocean Drive",
+      "city": "Miami",
+      "state": "FL",
+      "postal_code": "33139",
+      "country": "USA"
+    }
+  },
+  {
+    "email": "emma.davis@example.com",
+    "first_name": "Emma",
+    "last_name": "Davis",
+    "phone": "+1-555-0105",
+    "is_active": true,
+    "address": {
+      "street": "654 Peachtree Street",
+      "city": "Atlanta",
+      "state": "GA",
+      "postal_code": "30308",
+      "country": "USA"
+    }
+  },
+  {
+    "email": "frank.miller@example.com",
+    "first_name": "Frank",
+    "last_name": "Miller",
+    "phone": "+1-555-0106",
+    "is_active": true,
+    "address": {
+      "street": "987 Lake Shore Drive",
+      "city": "Seattle",
+      "state": "WA",
+      "postal_code": "98101",
+      "country": "USA"
+    }
+  },
+  {
+    "email": "grace.wilson@example.com",
+    "first_name": "Grace",
+    "last_name": "Wilson",
+    "phone": "+1-555-0107",
+    "is_active": false,
+    "address": {
+      "street": "147 Congress Avenue",
+      "city": "Austin",
+      "state": "TX",
+      "postal_code": "78701",
+      "country": "USA"
+    }
+  },
+  {
+    "email": "henry.moore@example.com",
+    "first_name": "Henry",
+    "last_name": "Moore",
+    "phone": "+1-555-0108",
+    "is_active": true,
+    "address": {
+      "street": "258 Tremont Street",
+      "city": "Boston",
+      "state": "MA",
+      "postal_code": "02116",
+      "country": "USA"
+    }
+  },
+  {
+    "email": "isabel.taylor@example.com",
+    "first_name": "Isabel",
+    "last_name": "Taylor",
+    "phone": "+1-555-0109",
+    "is_active": true,
+    "address": {
+      "street": "369 Cherry Street",
+      "city": "Portland",
+      "state": "OR",
+      "postal_code": "97214",
+      "country": "USA"
+    }
+  },
+  {
+    "email": "jack.anderson@example.com",
+    "first_name": "Jack",
+    "last_name": "Anderson",
+    "phone": "+1-555-0110",
+    "is_active": true,
+    "address": {
+      "street": "741 Main Street",
+      "city": "Denver",
+      "state": "CO",
+      "postal_code": "80202",
+      "country": "USA"
+    }
+  }
+]
