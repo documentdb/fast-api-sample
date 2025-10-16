@@ -2,14 +2,12 @@
 
 A modern, full-stack e-commerce application built with FastAPI and open-source DocumentDB (MongoDB-compatible), orchestrated with Docker containers.
 
-> **🧪 New to this project?** Follow our [**Complete Lab Walkthrough**](docs/LAB_WALKTHROUGH.md) for step-by-step instructions!
+## **🧪 New to this project?** [**Start here**](docs/WALKTHROUGH_PART1.md) for step-by-step instructions!
 
 ## 🎯 What You'll Learn
 
 - Setting up a FastAPI backend and connecting it to DocumentDB using Docker Compose
-- Best practices for local development, testing, and CI/CD integration with Docker
 - How open-source DocumentDB enables rapid iteration and seamless migration to cloud environments
-- Real-world patterns for building, running, and debugging full-stack apps in isolated, reproducible environments
 - **Using the DocumentDB for VS Code extension** to explore, query, and manage your database visually
 
 ## 🏗️ Architecture
@@ -92,10 +90,10 @@ This will:
 - Set up networking between services
 - Initialize the database connection
 
-### 4. Access the Application
+### 6. Access the Application
 
+- **Final Product**: http://localhost
 - **API Documentation**: http://localhost:8000/docs
-- **Alternative API Docs**: http://localhost:8000/redoc
 - **Health Check**: http://localhost:8000/health
 
 ## 📚 API Endpoints
@@ -246,50 +244,6 @@ docker-compose up --build
 └── README.md
 ```
 
-## 🎓 Learning Path
-
-### Lab 1: Project Setup ✅
-- Fork/clone the template
-- Understand the project structure
-- Run the application locally
-- **NEW**: Install and configure the DocumentDB for VS Code extension
-
-### Lab 2: Docker Configuration ✅
-- Understand docker-compose.yml
-- Configure DocumentDB container
-- Manage environment variables
-- **NEW**: Connect extension to local DocumentDB instance
-
-### Lab 3: Database Integration
-- Explore the MongoDB connection using Beanie
-- Understand connection pooling
-- Test the health check endpoint
-- **NEW**: Browse collections and documents using the extension
-
-### Lab 4: Models and Schemas
-- Review Pydantic models for validation
-- Understand Beanie document models
-- See the relationship between schemas and models
-- **NEW**: View document structure in Tree/Table/JSON views
-
-### Lab 5: CRUD Operations
-- Implement product endpoints
-- Add pagination and filtering
-- Create indexes for performance
-- **NEW**: Test queries using the extension's query editor
-
-### Lab 6: Advanced Queries
-- Aggregation pipelines for order analytics
-- Complex filtering with MongoDB queries
-- Vector search (optional)
-- **NEW**: Use MongoDB Playground for complex aggregations
-
-### Lab 7: Testing
-- Write unit tests with pytest
-- Integration tests with test database
-- CI/CD with GitHub Actions
-- **NEW**: Export test data fixtures using the extension
-
 ## 🌟 Key Features Demonstrated
 
 ### DocumentDB Capabilities
@@ -315,27 +269,6 @@ docker-compose up --build
 - ✅ Health checks
 - ✅ Network isolation
 
-## 🚀 Deployment (Optional)
-
-### Deploy to Azure with azd
-
-```bash
-# Initialize Azure Developer CLI
-azd init
-
-# Deploy to Azure
-azd up
-```
-
-This will provision:
-- Azure Container Apps for the FastAPI backend
-- Azure Cosmos DB for MongoDB vCore (powered by DocumentDB)
-- Networking and monitoring
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
 ## 📄 License
 
 This project is licensed under the MIT License.
@@ -344,7 +277,7 @@ This project is licensed under the MIT License.
 
 ### Official Documentation
 - [FastAPI Documentation](https://fastapi.tiangolo.com/)
-- [DocumentDB GitHub](https://github.com/microsoft/documentdb)
+- [DocumentDB GitHub](https://github.com/documentdb/documentdb)
 - [DocumentDB Documentation](https://documentdb.io/)
 - [Beanie ODM](https://beanie-odm.dev/)
 - [Docker Documentation](https://docs.docker.com/)
@@ -361,14 +294,3 @@ This project is licensed under the MIT License.
 - [MongoDB Query Documentation](https://www.mongodb.com/docs/manual/tutorial/query-documents/)
 - [Pydantic Documentation](https://docs.pydantic.dev/)
 - [Python Async/Await](https://docs.python.org/3/library/asyncio.html)
-
-## 💡 Tips
-
-- **Use the interactive API docs** at `/docs` to test endpoints
-- **Explore your data visually** with the DocumentDB for VS Code extension
-- **Check the logs** if something isn't working: `docker-compose logs -f`
-- **The database persists data** in a Docker volume - use `docker-compose down -v` to reset
-- **Set `RELOAD=true`** in `.env` for hot-reloading during development
-- **Open the workspace file** (`fastapi-documentdb.code-workspace`) for recommended extensions and settings
-- **Export data backups** regularly using the extension's export feature
-- **Use MongoDB Playground files** (`.mongodb`) for reusable queries and analytics
