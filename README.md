@@ -67,10 +67,6 @@ mongodb://<YOUR_USERNAME>:<YOUR_PASSWORD>@localhost:10260/?tls=true&tlsAllowInva
 
 #### 4. Set Up Environment Variables
 
-```bash
-cp .env.example .env
-```
-
 In the `.env` file, add your connection string, database name, and DocumentDB credentials.
 
 #### 5. Start the Application
