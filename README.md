@@ -67,7 +67,18 @@ mongodb://<YOUR_USERNAME>:<YOUR_PASSWORD>@localhost:10260/?tls=true&tlsAllowInva
 
 #### 4. Set Up Environment Variables
 
+```bash
+cp .env.example .env
+```
+
 In the `.env` file, add your connection string, database name, and DocumentDB credentials.
+
+Afterwards, install the requirements needed for the data to migrate to the frontend.
+
+```bash
+cd backend
+pip install -r requirements.txt
+```
 
 #### 5. Start the Application
 
