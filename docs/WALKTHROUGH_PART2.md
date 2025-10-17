@@ -55,35 +55,35 @@ Let's trace a request through FastAPI:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│ 1. HTTP Request arrives at Uvicorn (ASGI Server)           │
+│ 1. HTTP Request arrives at Uvicorn (ASGI Server)            │
 └─────────────────────┬───────────────────────────────────────┘
                       │
 ┌─────────────────────▼───────────────────────────────────────┐
-│ 2. FastAPI Router matches /api/v1/products                 │
+│ 2. FastAPI Router matches /api/v1/products                  │
 └─────────────────────┬───────────────────────────────────────┘
                       │
 ┌─────────────────────▼───────────────────────────────────────┐
-│ 3. Pydantic validates query parameters                     │
-│    - page: int (must be >= 1)                              │
-│    - page_size: int (must be 1-100)                        │
+│ 3. Pydantic validates query parameters                      │
+│    - page: int (must be >= 1)                               │
+│    - page_size: int (must be 1-100)                         │
 └─────────────────────┬───────────────────────────────────────┘
                       │
 ┌─────────────────────▼───────────────────────────────────────┐
 │ 4. Handler executes: list_products()                        │
-│    - Creates Beanie query object                           │
-│    - await query.count() → Releases event loop             │
-│    - DocumentDB processes query via PostgreSQL             │
-│    - await query.to_list() → Gets results                  │
+│    - Creates Beanie query object                            │
+│    - await query.count() → Releases event loop              │
+│    - DocumentDB processes query via PostgreSQL              │
+│    - await query.to_list() → Gets results                   │
 └─────────────────────┬───────────────────────────────────────┘
                       │
 ┌─────────────────────▼───────────────────────────────────────┐
-│ 5. Pydantic serializes response to JSON                    │
-│    - ProductListResponse validates structure               │
-│    - Converts Decimal to float, datetime to ISO string     │
+│ 5. Pydantic serializes response to JSON                     │
+│    - ProductListResponse validates structure                │
+│    - Converts Decimal to float, datetime to ISO string      │
 └─────────────────────┬───────────────────────────────────────┘
                       │
 ┌─────────────────────▼───────────────────────────────────────┐
-│ 6. HTTP Response sent back (200 OK)                        │
+│ 6. HTTP Response sent back (200 OK)                         │
 └─────────────────────────────────────────────────────────────┘
 ```
 
