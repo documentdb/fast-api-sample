@@ -319,7 +319,7 @@ Understanding the separation of concerns:
 │                                                             │
 │  ┌──────────────────┐         ┌──────────────────┐        │
 │  │ ProductCreate    │  POST   │ ProductResponse  │        │
-│  │ (Request Schema) │ ─────▶  │ (Response Schema)│        │
+│  │ (Request Schema) │ ─────▶ │ (Response Schema)│        │
 │  └────────┬─────────┘         └────────▲─────────┘        │
 │           │                              │                  │
 └───────────┼──────────────────────────────┼──────────────────┘
@@ -331,7 +331,7 @@ Understanding the separation of concerns:
 │           │                              │                  │
 │  ┌────────▼──────────┐        ┌─────────┴─────────┐       │
 │  │     Product        │ INSERT │     Product       │       │
-│  │ (Beanie Document)  │ ─────▶ │ (in DocumentDB)   │       │
+│  │ (Beanie Document)  │ ─────▶│ (in DocumentDB)   │       │
 │  └────────────────────┘        └───────────────────┘       │
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
