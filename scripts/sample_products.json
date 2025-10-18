@@ -6,7 +6,11 @@
     "category": "Electronics",
     "sku": "ELEC-HEAD-001",
     "stock_quantity": 50,
-    "tags": ["audio", "bluetooth", "noise-cancelling", "wireless"]
+    "tags": ["audio", "bluetooth", "noise-cancelling", "wireless"],
+    "is_active": true,
+    "image_url": null,
+    "created_at": "2025-01-15T10:00:00",
+    "updated_at": "2025-01-15T10:00:00"
   },
   {
     "name": "Smart Fitness Watch",
@@ -15,7 +19,11 @@
     "category": "Electronics",
     "sku": "ELEC-WATCH-001",
     "stock_quantity": 75,
-    "tags": ["fitness", "smartwatch", "health", "wearable"]
+    "tags": ["fitness", "smartwatch", "health", "wearable"],
+    "is_active": true,
+    "image_url": null,
+    "created_at": "2025-01-15T10:00:00",
+    "updated_at": "2025-01-15T10:00:00"
   },
   {
     "name": "Ergonomic Office Chair",
@@ -24,7 +32,11 @@
     "category": "Furniture",
     "sku": "FURN-CHAIR-001",
     "stock_quantity": 25,
-    "tags": ["office", "ergonomic", "chair", "furniture"]
+    "tags": ["office", "ergonomic", "chair", "furniture"],
+    "is_active": true,
+    "image_url": null,
+    "created_at": "2025-01-15T10:00:00",
+    "updated_at": "2025-01-15T10:00:00"
   },
   {
     "name": "Portable External SSD 1TB",
@@ -33,7 +45,11 @@
     "category": "Electronics",
     "sku": "ELEC-SSD-001",
     "stock_quantity": 100,
-    "tags": ["storage", "usb-c", "portable", "ssd"]
+    "tags": ["storage", "usb-c", "portable", "ssd"],
+    "is_active": true,
+    "image_url": null,
+    "created_at": "2025-01-15T10:00:00",
+    "updated_at": "2025-01-15T10:00:00"
   },
   {
     "name": "Organic Cotton T-Shirt",
@@ -42,7 +58,11 @@
     "category": "Clothing",
     "sku": "CLTH-SHIRT-001",
     "stock_quantity": 200,
-    "tags": ["organic", "cotton", "casual", "sustainable"]
+    "tags": ["organic", "cotton", "casual", "sustainable"],
+    "is_active": true,
+    "image_url": null,
+    "created_at": "2025-01-15T10:00:00",
+    "updated_at": "2025-01-15T10:00:00"
   },
   {
     "name": "Stainless Steel Water Bottle",
@@ -51,7 +71,11 @@
     "category": "Outdoor",
     "sku": "OUTD-BOTTLE-001",
     "stock_quantity": 150,
-    "tags": ["insulated", "reusable", "outdoor", "eco-friendly"]
+    "tags": ["insulated", "reusable", "outdoor", "eco-friendly"],
+    "is_active": true,
+    "image_url": null,
+    "created_at": "2025-01-15T10:00:00",
+    "updated_at": "2025-01-15T10:00:00"
   },
   {
     "name": "Mechanical Keyboard RGB",
@@ -60,7 +84,11 @@
     "category": "Electronics",
     "sku": "ELEC-KEYB-001",
     "stock_quantity": 60,
-    "tags": ["gaming", "keyboard", "rgb", "mechanical"]
+    "tags": ["gaming", "keyboard", "rgb", "mechanical"],
+    "is_active": true,
+    "image_url": null,
+    "created_at": "2025-01-15T10:00:00",
+    "updated_at": "2025-01-15T10:00:00"
   },
   {
     "name": "Yoga Mat Premium",
@@ -69,7 +97,11 @@
     "category": "Fitness",
     "sku": "FIT-MAT-001",
     "stock_quantity": 80,
-    "tags": ["yoga", "exercise", "fitness", "non-slip"]
+    "tags": ["yoga", "exercise", "fitness", "non-slip"],
+    "is_active": true,
+    "image_url": null,
+    "created_at": "2025-01-15T10:00:00",
+    "updated_at": "2025-01-15T10:00:00"
   },
   {
     "name": "Coffee Maker Automatic",
@@ -78,7 +110,11 @@
     "category": "Appliances",
     "sku": "APPL-COFFEE-001",
     "stock_quantity": 40,
-    "tags": ["coffee", "kitchen", "programmable", "thermal"]
+    "tags": ["coffee", "kitchen", "programmable", "thermal"],
+    "is_active": true,
+    "image_url": null,
+    "created_at": "2025-01-15T10:00:00",
+    "updated_at": "2025-01-15T10:00:00"
   },
   {
     "name": "Running Shoes Men's",
@@ -87,7 +123,11 @@
     "category": "Footwear",
     "sku": "FOOT-RUN-001",
     "stock_quantity": 120,
-    "tags": ["running", "athletic", "shoes", "breathable"]
+    "tags": ["running", "athletic", "shoes", "breathable"],
+    "is_active": true,
+    "image_url": null,
+    "created_at": "2025-01-15T10:00:00",
+    "updated_at": "2025-01-15T10:00:00"
   },
   {
     "name": "Wireless Mouse Ergonomic",
@@ -96,7 +136,11 @@
     "category": "Electronics",
     "sku": "ELEC-MOUSE-001",
     "stock_quantity": 90,
-    "tags": ["mouse", "ergonomic", "wireless", "office"]
+    "tags": ["mouse", "ergonomic", "wireless", "office"],
+    "is_active": true,
+    "image_url": null,
+    "created_at": "2025-01-15T10:00:00",
+    "updated_at": "2025-01-15T10:00:00"
   },
   {
     "name": "Backpack Laptop 17 inch",
@@ -105,7 +149,11 @@
     "category": "Accessories",
     "sku": "ACC-BACK-001",
     "stock_quantity": 110,
-    "tags": ["backpack", "laptop", "travel", "usb"]
+    "tags": ["backpack", "laptop", "travel", "usb"],
+    "is_active": true,
+    "image_url": null,
+    "created_at": "2025-01-15T10:00:00",
+    "updated_at": "2025-01-15T10:00:00"
   },
   {
     "name": "LED Desk Lamp",
@@ -114,7 +162,11 @@
     "category": "Furniture",
     "sku": "FURN-LAMP-001",
     "stock_quantity": 70,
-    "tags": ["led", "lamp", "desk", "adjustable"]
+    "tags": ["led", "lamp", "desk", "adjustable"],
+    "is_active": true,
+    "image_url": null,
+    "created_at": "2025-01-15T10:00:00",
+    "updated_at": "2025-01-15T10:00:00"
   },
   {
     "name": "Protein Powder Chocolate",
@@ -123,7 +175,11 @@
     "category": "Health",
     "sku": "HLTH-PROT-001",
     "stock_quantity": 85,
-    "tags": ["protein", "supplement", "fitness", "chocolate"]
+    "tags": ["protein", "supplement", "fitness", "chocolate"],
+    "is_active": true,
+    "image_url": null,
+    "created_at": "2025-01-15T10:00:00",
+    "updated_at": "2025-01-15T10:00:00"
   },
   {
     "name": "Sunglasses Polarized",
@@ -132,6 +188,10 @@
     "category": "Accessories",
     "sku": "ACC-SUNG-001",
     "stock_quantity": 95,
-    "tags": ["sunglasses", "polarized", "uv-protection", "outdoor"]
+    "tags": ["sunglasses", "polarized", "uv-protection", "outdoor"],
+    "is_active": true,
+    "image_url": null,
+    "created_at": "2025-01-15T10:00:00",
+    "updated_at": "2025-01-15T10:00:00"
   }
 ]

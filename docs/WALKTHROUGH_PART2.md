@@ -155,7 +155,7 @@ async def create_product(
 
 Let's create a performance comparison to see async in action!
 
-**Create a new file: `backend/app/routers/benchmark.py`**
+**Create a new file: `backend/app/routers/benchmark.py`** (also created under /examples)
 
 ```python
 """
