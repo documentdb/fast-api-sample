@@ -297,7 +297,7 @@ All dependencies were automatically installed when your Codespace was created vi
 
 2. **Verify key packages can be imported**:
    ```bash
-   python -c "import fastapi, uvicorn, beanie, motor; print('✓ All packages installed successfully!')"
+   python -c "import fastapi, uvicorn, beanie, motor; print('✓ All packages installed successfully')"
    ```
    
    Expected output:
