@@ -3,6 +3,12 @@ set -e
 
 echo "🚀 Starting FastAPI + DocumentDB Workshop Setup..."
 
+# Fix Docker permissions for vscode user
+echo "🔧 Configuring Docker permissions..."
+sudo usermod -aG docker vscode || true
+sudo chown vscode:docker /var/run/docker.sock || true
+sudo chmod 666 /var/run/docker.sock || true
+
 # Update system packages
 echo "📦 Updating system packages..."
 sudo apt-get update

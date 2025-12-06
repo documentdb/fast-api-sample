@@ -6,7 +6,9 @@
     "ghcr.io/devcontainers/features/docker-in-docker:2": {
       "version": "latest",
       "moby": false,
-      "dockerDashComposeVersion": "v2"
+      "dockerDashComposeVersion": "v2",
+      "installDockerBuildx": true,
+      "installDockerComposeSwitch": true
     },
     "ghcr.io/devcontainers/features/node:1": {
       "version": "20"
@@ -84,11 +86,9 @@
 
   "remoteUser": "vscode",
   
-  "mounts": [
-    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
-  ],
+  "containerEnv": {
+    "DOCKER_BUILDKIT": "1"
+  },
 
-  "runArgs": [
-    "--init"
-  ]
+  "overrideCommand": false
 }
