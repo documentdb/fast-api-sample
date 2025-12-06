@@ -53,5 +53,9 @@
 
   "postCreateCommand": "pip install --user -r backend/requirements.txt && cd frontend && npm install && cd ..",
 
-  "remoteUser": "vscode"
+  "remoteUser": "vscode",
+
+  "remoteEnv": {
+    "DOCKER_API_VERSION": "1.43"
+  }
 }
