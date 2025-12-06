@@ -5,10 +5,20 @@
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {
       "version": "latest",
-      "moby": true
+      "moby": true,
+      "dockerDashComposeVersion": "v2"
     },
     "ghcr.io/devcontainers/features/node:1": {
       "version": "20"
+    },
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "installOhMyZsh": true,
+      "upgradePackages": true,
+      "username": "vscode"
+    },
+    "ghcr.io/devcontainers/features/git:1": {
+      "version": "latest"
     }
   },
 
@@ -21,18 +31,32 @@
         "ms-azuretools.vscode-documentdb",
         "mongodb.mongodb-vscode",
         "esbenp.prettier-vscode",
-        "dbaeumer.vscode-eslint"
+        "dbaeumer.vscode-eslint",
+        "ms-python.black-formatter",
+        "ms-python.isort",
+        "charliermarsh.ruff"
       ],
       "settings": {
         "python.defaultInterpreterPath": "/usr/local/bin/python",
         "python.linting.enabled": true,
         "python.linting.pylintEnabled": false,
-        "python.formatting.provider": "black",
+        "python.formatting.provider": "none",
+        "[python]": {
+          "editor.defaultFormatter": "ms-python.black-formatter",
+          "editor.formatOnSave": true,
+          "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+          }
+        },
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "[python]": {
-          "editor.defaultFormatter": "ms-python.python"
-        }
+        "isort.args": ["--profile", "black"],
+        "black-formatter.args": ["--line-length", "100"],
+        "python.testing.pytestEnabled": true,
+        "python.testing.unittestEnabled": false,
+        "python.testing.pytestArgs": [
+          "backend/tests"
+        ]
       }
     }
   },
@@ -41,19 +65,30 @@
   "portsAttributes": {
     "8000": {
       "label": "FastAPI Backend",
-      "onAutoForward": "notify"
+      "onAutoForward": "notify",
+      "requireLocalPort": false
     },
     "80": {
       "label": "React Frontend",
-      "onAutoForward": "notify"
+      "onAutoForward": "notify",
+      "requireLocalPort": false
     },
     "10260": {
       "label": "DocumentDB",
-      "onAutoForward": "ignore"
+      "onAutoForward": "ignore",
+      "requireLocalPort": false
     }
   },
 
-  "postCreateCommand": "pip install --user -r backend/requirements.txt && cd frontend && npm install",
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
 
-  "remoteUser": "vscode"
+  "remoteUser": "vscode",
+  
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+  ],
+
+  "runArgs": [
+    "--init"
+  ]
 }

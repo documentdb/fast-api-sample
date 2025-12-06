@@ -447,7 +447,6 @@ Your setup is successful if:
 - ✅ Codespace is running and accessible
 - ✅ DocumentDB container is running on port 10260
 - ✅ DocumentDB VS Code extension is connected
-- ✅ Sample data loaded into `ecommerce` database (customers, products, orders collections)
 - ✅ All Python and Node.js dependencies are verified
 - ✅ Docker Compose services are running
 - ✅ Ports 8000 and 80 are forwarded in Codespaces
@@ -534,7 +533,6 @@ To complete this module successfully, you should be able to:
 - ✅ Launch and access your GitHub Codespace
 - ✅ Have DocumentDB running in a Docker container
 - ✅ Connect to DocumentDB using the VS Code extension
-- ✅ Import sample data (customers, products, orders) into DocumentDB
 - ✅ Verify all dependencies are installed
 - ✅ Run the application using Docker Compose
 - ✅ Access the API documentation via forwarded ports
