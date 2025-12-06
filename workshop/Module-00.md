@@ -115,7 +115,7 @@ Now that your environment is ready, let's deploy DocumentDB locally using Docker
 
 ### Connect to DocumentDB with VS Code Extension
 
-The DocumentDB extension is already installed in your Codespace. Let's connect to your local DocumentDB instance:
+Download the 'DocumentDB for VS Code' extension on your codespace using the VS Code Marketplace. Afterwards, follow these steps to connect your DocumentDB container to the extension:
 
 1. **Open the DocumentDB extension**:
    - Click the DocumentDB icon in the left sidebar (database icon)
