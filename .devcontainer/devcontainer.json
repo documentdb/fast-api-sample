@@ -1,0 +1,59 @@
+{
+  "name": "FastAPI + DocumentDB E-Commerce Workshop",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest",
+      "moby": true
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-azuretools.vscode-docker",
+        "ms-azuretools.vscode-documentdb",
+        "mongodb.mongodb-vscode",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": false,
+        "python.formatting.provider": "black",
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "[python]": {
+          "editor.defaultFormatter": "ms-python.python"
+        }
+      }
+    }
+  },
+
+  "forwardPorts": [8000, 80, 10260],
+  "portsAttributes": {
+    "8000": {
+      "label": "FastAPI Backend",
+      "onAutoForward": "notify"
+    },
+    "80": {
+      "label": "React Frontend",
+      "onAutoForward": "notify"
+    },
+    "10260": {
+      "label": "DocumentDB",
+      "onAutoForward": "ignore"
+    }
+  },
+
+  "postCreateCommand": "pip install --user -r backend/requirements.txt && cd frontend && npm install",
+
+  "remoteUser": "vscode"
+}
