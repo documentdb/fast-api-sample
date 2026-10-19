@@ -179,10 +179,10 @@ pip install -r requirements.txt
 
 2. Start DocumentDB separately:
 ```bash
-docker run -dt -p 27017:27017 \
+docker run -dt --pull always -p 10260:10260 \
   --name documentdb-local \
-  ghcr.io/microsoft/documentdb/documentdb-local:latest \
-  --username docdb_user --password docdb_password
+  -e USERNAME=docdb_user -e PASSWORD=docdb_password \
+  ghcr.io/documentdb/documentdb/documentdb-local:latest
 ```
 
 3. Run the FastAPI app:
